@@ -22,3 +22,6 @@ if __name__ == '__main__':
 
     # get orderbook for XCH-USDT with the default 10 entries
     # pprint(API_obj.get_orderbook(instId='XCH-USDT'))
+
+    # get the price ticket snapshot for XCH-USDT
+    # pprint(API_obj.get_ticker(instId='XCH-USDT'))

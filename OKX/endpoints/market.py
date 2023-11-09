@@ -23,3 +23,14 @@ class MarketEndpoints():
                         data={'instId': instId,
                               'sz': sz},
                         max_retries=max_retries).send()
+
+    def get_ticker(self,
+                      instId: AnyStr,
+                      max_retries: int = 1):
+
+        added_url = r'api/v5/market/ticker'
+
+        return API_call(base_url=self.base_endpoint,
+                        added_url=added_url,
+                        data={'instId': instId},
+                        max_retries=max_retries).send()
