@@ -13,8 +13,8 @@ class PublicEndpoints():
 
     def get_instruments(self,
                         instId: AnyStr = '',
-                        max_retries: int = 1,
-                        instType: Literal['SPOT', 'MARGIN', 'SWAP', 'FUTURES', 'OPTION'] = 'SPOT'):
+                        instType: Literal['SPOT', 'MARGIN', 'SWAP', 'FUTURES', 'OPTION'] = 'SPOT',
+                        max_retries: int = 1):
 
         added_url = r'api/v5/public/instruments'
 
