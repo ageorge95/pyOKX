@@ -1,10 +1,12 @@
 from logging import getLogger
 from typing import AnyStr
 from OKX.endpoints.public import PublicEndpoints
+from OKX.endpoints.market import MarketEndpoints
 
 base_endpoint: AnyStr = 'https://www.okx.com'
 
-class pyOKX(PublicEndpoints):
+class pyOKX(PublicEndpoints,
+            MarketEndpoints):
 
     def __init__(self,
                  API_key: AnyStr = None,
