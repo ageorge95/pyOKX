@@ -1,0 +1,3 @@
+concurrent_log_handler
+requests
+git+https://github.com/ageorge95/ag95.git
