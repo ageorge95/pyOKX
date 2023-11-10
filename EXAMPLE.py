@@ -25,3 +25,15 @@ if __name__ == '__main__':
 
     # get the price ticket snapshot for XCH-USDT
     # pprint(API_obj.get_ticker(instId='XCH-USDT'))
+
+    # ########### account examples ###########
+    # initialize the APi wrapper
+    # API_obj = pyOKX(API_key=getenv('OKX_API_KEY'),
+    #                 API_secret=getenv('OKX_API_SECRET'),
+    #                 API_passphrase=getenv('OKX_API_PASSPHRASE'))
+
+    # account information for all pairs
+    # pprint(API_obj.account_information())
+
+    # account information for XCH only
+    # pprint(API_obj.account_information(ccy='BTC'))
