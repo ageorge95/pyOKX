@@ -36,3 +36,23 @@ class AccountEndpoints():
                                                API_key=self.API_key,
                                                passphrase=self.API_passphrase),
                         max_retries=max_retries).send()
+
+    @check_API_key
+    def get_positions(self,
+                      instId: AnyStr = '',
+                      max_retries: int = 1):
+        added_url = r'api/v5/account/positions'
+
+        data={}
+        if instId:
+            data['instId'] = instId
+
+        return API_call(base_url=self.base_endpoint,
+                        added_url=added_url,
+                        data=data,
+                        headers=prepare_header(requestPath=added_url,
+                                               body=data,
+                                               API_secret=self.API_secret,
+                                               API_key=self.API_key,
+                                               passphrase=self.API_passphrase),
+                        max_retries=max_retries).send()

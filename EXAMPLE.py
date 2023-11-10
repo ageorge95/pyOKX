@@ -37,3 +37,9 @@ if __name__ == '__main__':
 
     # account information for XCH only
     # pprint(API_obj.account_information(ccy='BTC'))
+
+    # opened positions for all assets
+    # pprint(API_obj.get_positions())
+
+    # opened positions for XCH_USDT
+    # pprint(API_obj.get_positions(instId='XCH-USDT'))
