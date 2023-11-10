@@ -43,3 +43,9 @@ if __name__ == '__main__':
 
     # opened positions for XCH_USDT
     # pprint(API_obj.get_positions(instId='XCH-USDT'))
+
+    # closed positions for all assets
+    # pprint(API_obj.get_positions_history())
+
+    # closed positions for XCH_USDT
+    # pprint(API_obj.get_positions_history(instId='XCH-USDT'))
