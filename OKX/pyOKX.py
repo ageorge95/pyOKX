@@ -4,7 +4,7 @@ from OKX.endpoints.public import PublicEndpoints
 from OKX.endpoints.market import MarketEndpoints
 from OKX.endpoints.account import AccountEndpoints
 
-base_endpoint: AnyStr = 'https://okx.com'
+base_endpoint: AnyStr = 'https://www.okx.com'
 
 class pyOKX(PublicEndpoints,
             MarketEndpoints,
