@@ -1,5 +1,6 @@
 from logging import getLogger
-from typing import AnyStr
+from typing import (AnyStr,
+                    Literal)
 from OKX.network_wrappers import API_call
 from OKX.utils import (check_API_key,
                        prepare_header)
@@ -130,6 +131,36 @@ class AccountEndpoints():
 
         data = {'instId': instId,
                 'ordId': ordId}
+
+        return API_call(base_url=self.base_endpoint,
+                        added_url=added_url,
+                        data=data,
+                        headers=prepare_header(requestPath=added_url,
+                                               body=data,
+                                               API_secret=self.API_secret,
+                                               API_key=self.API_key,
+                                               passphrase=self.API_passphrase,
+                                               method='POST'),
+                        max_retries=max_retries,
+                        call_method=post).send()
+
+    @check_API_key
+    def post_order(self,
+                   instId: AnyStr,
+                   side: Literal['sell', 'buy'],
+                   sz: AnyStr,
+                   px: AnyStr,
+                   tdMode: AnyStr = 'cash',
+                   ordType: AnyStr = 'limit',
+                   max_retries: int = 1):
+        added_url = r'api/v5/trade/order'
+
+        data = {'instId': instId,
+                'side': side,
+                'sz': sz,
+                'px': px,
+                'tdMode': tdMode,
+                'ordType': ordType}
 
         return API_call(base_url=self.base_endpoint,
                         added_url=added_url,
