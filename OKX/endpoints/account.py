@@ -4,10 +4,7 @@ from typing import (AnyStr,
 from OKX.network_wrappers import API_call
 from OKX.utils import (check_API_key,
                        prepare_header)
-from datetime import (datetime,
-                      UTC)
-from requests import delete,\
-    post
+from requests import post
 
 class AccountEndpoints():
     _log: getLogger
