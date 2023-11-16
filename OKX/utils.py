@@ -3,6 +3,8 @@ from hashlib import sha256
 from hmac import digest
 from base64 import b64encode
 from datetime import datetime
+from json import dumps
+from typing import Literal
 
 def check_API_key(func):
     def inner(*args, **kwargs):
@@ -16,13 +18,17 @@ def prepare_header(requestPath,
                    API_secret,
                    API_key,
                    passphrase,
-                   method='GET'):
+                   method: Literal['GET', 'POST'] = 'GET'):
 
     timestamp = datetime.utcnow().isoformat("T", "milliseconds") + 'Z'
-    body = '?' + urlencode(body) if body else ''
-    prehash = timestamp + method + f"/{requestPath}" + body
+    if method == 'GET':
+        body = '?' + urlencode(body) if body else ''
+    elif method == 'POST':
+        body = str(dumps(body))
+    else:
+        raise Exception(f'Unknown method type {method}')
 
-    print(prehash)
+    prehash = timestamp + method + f"/{requestPath}" + body
 
     return {'OK-ACCESS-KEY': API_key,
             'OK-ACCESS-SIGN': b64encode(digest(API_secret.encode('utf-8'),
