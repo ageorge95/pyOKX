@@ -59,3 +59,7 @@ if __name__ == '__main__':
     # specific order details
     # pprint(API_obj.order_details(instId='XCH-USDT',
     #                              ordId='645353830926131213'))
+
+    # cancel an order
+    # pprint(API_obj.cancel_order(instId='XCH-USDT',
+    #                             ordId='645353830926131213'))
