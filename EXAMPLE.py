@@ -55,3 +55,7 @@ if __name__ == '__main__':
 
     # opened orders for XCH-USDT
     # pprint(API_obj.pending_orders(instId='XCH-USDT'))
+
+    # specific order details
+    # pprint(API_obj.order_details(instId='XCH-USDT',
+    #                              ordId='645353830926131213'))
