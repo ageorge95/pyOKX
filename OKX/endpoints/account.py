@@ -40,12 +40,13 @@ class AccountEndpoints():
     @check_API_key
     def get_positions(self,
                       instId: AnyStr = '',
+                      posId: AnyStr = '',
                       max_retries: int = 1):
         added_url = r'api/v5/account/positions'
 
         data={}
-        if instId:
-            data['instId'] = instId
+        if instId: data['instId'] = instId
+        if posId: data['posId'] = posId
 
         return API_call(base_url=self.base_endpoint,
                         added_url=added_url,
