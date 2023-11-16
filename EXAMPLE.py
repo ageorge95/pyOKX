@@ -49,3 +49,9 @@ if __name__ == '__main__':
 
     # closed positions for XCH_USDT
     # pprint(API_obj.get_positions_history(instId='XCH-USDT'))
+
+    # opened orders for all assets
+    # pprint(API_obj.pending_orders())
+
+    # opened orders for XCH-USDT
+    # pprint(API_obj.pending_orders(instId='XCH-USDT'))
