@@ -4,7 +4,7 @@ from typing import (AnyStr,
 from OKX.network_wrappers import API_call
 from OKX.utils import (check_API_key,
                        prepare_header)
-from requests import post
+from requests import post, get
 
 class AccountEndpoints():
     _log: getLogger
@@ -170,3 +170,43 @@ class AccountEndpoints():
                                                method='POST'),
                         max_retries=max_retries,
                         call_method=post).send()
+
+    @check_API_key
+    def deposit_history(self,
+                   ccy: AnyStr,
+                   max_retries: int = 1):
+        added_url = r'api/v5/asset/deposit-history'
+
+        data = {'ccy': ccy}
+
+        return API_call(base_url=self.base_endpoint,
+                        added_url=added_url,
+                        data=data,
+                        headers=prepare_header(requestPath=added_url,
+                                               body=data,
+                                               API_secret=self.API_secret,
+                                               API_key=self.API_key,
+                                               passphrase=self.API_passphrase,
+                                               method='GET'),
+                        max_retries=max_retries,
+                        call_method=get).send()
+
+    @check_API_key
+    def withdrawal_history(self,
+                        ccy: AnyStr,
+                        max_retries: int = 1):
+        added_url = r'api/v5/asset/withdrawal-history'
+
+        data = {'ccy': ccy}
+
+        return API_call(base_url=self.base_endpoint,
+                        added_url=added_url,
+                        data=data,
+                        headers=prepare_header(requestPath=added_url,
+                                               body=data,
+                                               API_secret=self.API_secret,
+                                               API_key=self.API_key,
+                                               passphrase=self.API_passphrase,
+                                               method='GET'),
+                        max_retries=max_retries,
+                        call_method=get).send()

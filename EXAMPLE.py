@@ -69,3 +69,9 @@ if __name__ == '__main__':
     #                           side='sell',
     #                           sz='0.1',
     #                           px='35'))
+
+    # deposit history
+    # pprint(API_obj.deposit_history(ccy='XCH'))
+
+    # withdrawal history
+    # pprint(API_obj.withdrawal_history(ccy='XCH'))
