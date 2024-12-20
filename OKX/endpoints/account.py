@@ -146,18 +146,24 @@ class AccountEndpoints():
                    instId: AnyStr,
                    side: Literal['sell', 'buy'],
                    sz: AnyStr,
-                   px: AnyStr,
+                   px: AnyStr = None,
                    tdMode: AnyStr = 'cash',
                    ordType: AnyStr = 'limit',
+                   tgtCcy: AnyStr = "base_ccy",
                    max_retries: int = 1):
         added_url = r'api/v5/trade/order'
 
         data = {'instId': instId,
                 'side': side,
                 'sz': sz,
-                'px': px,
                 'tdMode': tdMode,
-                'ordType': ordType}
+                'ordType': ordType,
+                'tgtCcy': tgtCcy}
+
+        if ordType == 'limit' and not px:
+            raise Exception('px not provided; px is mandatory for limit orders')
+        elif ordType == 'limit' and px:
+            data |= {'px': px}
 
         return API_call(base_url=self.base_endpoint,
                         added_url=added_url,
